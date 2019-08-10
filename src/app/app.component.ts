@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
+import { FileUploader, FileSelectDirective, FileDropDirective } from 'ng2-file-upload/ng2-file-upload';
 
 //source: https://appdividend.com/2019/06/07/angular-8-file-upload-tutorial-with-example-angular-image-upload/
 const URL = 'http://localhost:4000/api/upload';
@@ -12,9 +12,15 @@ const URL = 'http://localhost:4000/api/upload';
 export class AppComponent implements OnInit {
 
   public uploader: FileUploader = new FileUploader({ url: URL, itemAlias: 'photo' });
+  public hasBaseDropZoneOver:boolean = false;
 
   ngOnInit() {
 
+  }
+
+  fileOverBase(event: any): void {
+    this.hasBaseDropZoneOver = event;
+    this.uploadAllFiles();
   }
 
   uploadAllFiles() {    

@@ -8,12 +8,13 @@
   <div class="row">
     <div class="col-md-5 drop-upload-area" align="center">
       <div class="instruction-text text-center">Drop your files into the box</div>
-      <div class="upload-box"></div>
+      <div class="upload-box" [ngClass]="{'file-over': hasBaseDropZoneOver}"
+        (fileOver)="fileOverBase($event)" ng2FileDrop [uploader]="uploader"></div>
     </div>
     <div class="col-md-2">
       <div class="or-text">
         OR
-      </div>      
+      </div>
     </div>
     <div class="col-md-4 button-upload-area" align="center">
       <!-- browse to search for files -->
